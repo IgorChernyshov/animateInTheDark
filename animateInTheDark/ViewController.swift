@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 	var squareView: UIView = UIView()
 	var startButton: UIBarButtonItem?
 
-	var squareAnimator: UIViewPropertyAnimator?
 	var iterationCount = 0
 	var isAnimating = false
 
@@ -36,10 +35,7 @@ class ViewController: UIViewController {
 	@objc private func didTapStart() {
 		isAnimating.toggle()
 		configureStartButtonImage()
-		guard isAnimating else {
-			squareAnimator?.stopAnimation(true)
-			return
-		}
+		guard isAnimating else { return CATransaction.flush() }
 		animateSquare()
 	}
 
@@ -48,30 +44,39 @@ class ViewController: UIViewController {
 	}
 
 	private func animateSquare() {
-		squareAnimator = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut) {
-			UIView.animate(withDuration: self.animationDuration, delay: 0, options: [.curveEaseInOut]) {
-				let translationY = self.iterationCount % 2 == 0 ? self.view.frame.midY - self.squareSide : 0
-				self.squareView.transform = CGAffineTransform(translationX: 0, y: translationY)
-
-				let cornerRadius = self.iterationCount % 2 == 0 ? self.squareSide * 0.5 : 0
-				self.squareView.layer.cornerRadius = cornerRadius
-
-				let backgroundColor = self.colors[(self.iterationCount + 1) % self.colors.count]
-				self.squareView.backgroundColor = backgroundColor
-			} completion: { didFinish in
-				if didFinish {
-					self.iterationCount += 1
-					self.animateSquare()
-				} else {
-					self.iterationCount = 0
-					UIView.animate(withDuration: self.animationDuration, delay: 0, options: [.curveEaseInOut]) {
-						self.squareView.transform = .identity
-						self.squareView.layer.cornerRadius = 0
-						self.squareView.backgroundColor = self.colors.first
-					}
-				}
-			}
+		CATransaction.begin()
+		CATransaction.setCompletionBlock {
+			guard self.isAnimating else { return }
+			self.iterationCount += 1
+			self.animateSquare()
 		}
-		squareAnimator?.startAnimation()
+
+		let animationGroup = CAAnimationGroup()
+
+		let translationAnimation = CABasicAnimation(keyPath: "transform.translation.y")
+		translationAnimation.fromValue = 0
+		translationAnimation.toValue = view.frame.midY - squareSide
+
+		let cornerRadiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+		cornerRadiusAnimation.fromValue = 0
+		cornerRadiusAnimation.toValue = squareSide * 0.5
+
+		let backgroundColorAnimation = CABasicAnimation(keyPath: "backgroundColor")
+		backgroundColorAnimation.fromValue = colors.first?.cgColor
+		backgroundColorAnimation.toValue = colors[(iterationCount + 1) % colors.count].cgColor
+
+		let bounceAnimation = CABasicAnimation(keyPath: "transform.scale.y")
+		bounceAnimation.fromValue = 1.0
+		bounceAnimation.toValue = 0.1
+		bounceAnimation.beginTime = animationDuration * 0.9
+
+		animationGroup.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+		animationGroup.duration = animationDuration
+		animationGroup.autoreverses = true
+		animationGroup.animations = [translationAnimation, cornerRadiusAnimation, backgroundColorAnimation, bounceAnimation]
+
+		squareView.layer.add(animationGroup, forKey: nil)
+
+		CATransaction.commit()
 	}
 }
