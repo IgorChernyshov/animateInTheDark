@@ -9,15 +9,15 @@ import UIKit
 
 class MorphingSquareController: UIViewController {
 
-	var squareView: UIView = UIView()
-	var startButton: UIBarButtonItem?
+	private var squareView: UIView = UIView()
+	private var startButton: UIBarButtonItem?
 
-	var iterationCount = 0
-	var isAnimating = false
+	private var iterationCount = 0
+	private var isAnimating = false
 
-	let colors: [UIColor] = [.darkGray, .systemYellow, .systemMint, .systemRed, .systemCyan, .systemPink, .systemOrange]
-	let squareSide = 100.0
-	let animationDuration = 0.8
+	private let colors: [UIColor] = [.darkGray, .systemYellow, .systemMint, .systemRed, .systemCyan, .systemPink, .systemOrange]
+	private let squareSide = 100.0
+	private let animationDuration = 0.8
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -75,7 +75,7 @@ class MorphingSquareController: UIViewController {
 		animationGroup.autoreverses = true
 		animationGroup.animations = [translationAnimation, cornerRadiusAnimation, backgroundColorAnimation, bounceAnimation]
 
-		squareView.layer.add(animationGroup, forKey: nil)
+		squareView.layer.add(animationGroup, forKey: "animation")
 
 		CATransaction.commit()
 	}
