@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D61848FF275CCBD2007BA569 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61848FE275CCBD2007BA569 /* TabBarController.swift */; };
+		D6184901275CCC79007BA569 /* YellingGooseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6184900275CCC79007BA569 /* YellingGooseController.swift */; };
 		D6B714D6275141290088F364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B714D5275141290088F364 /* AppDelegate.swift */; };
 		D6B714D8275141290088F364 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B714D7275141290088F364 /* SceneDelegate.swift */; };
-		D6B714DA275141290088F364 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B714D9275141290088F364 /* ViewController.swift */; };
+		D6B714DA275141290088F364 /* MorphingSquareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B714D9275141290088F364 /* MorphingSquareController.swift */; };
 		D6B714DF2751412B0088F364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6B714DE2751412B0088F364 /* Assets.xcassets */; };
 		D6B714E22751412B0088F364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6B714E02751412B0088F364 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D61848FE275CCBD2007BA569 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D6184900275CCC79007BA569 /* YellingGooseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellingGooseController.swift; sourceTree = "<group>"; };
 		D6B714D2275141290088F364 /* animateInTheDark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = animateInTheDark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B714D5275141290088F364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6B714D7275141290088F364 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D6B714D9275141290088F364 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D6B714D9275141290088F364 /* MorphingSquareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorphingSquareController.swift; sourceTree = "<group>"; };
 		D6B714DE2751412B0088F364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6B714E12751412B0088F364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6B714E32751412B0088F364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,7 +60,9 @@
 			children = (
 				D6B714D5275141290088F364 /* AppDelegate.swift */,
 				D6B714D7275141290088F364 /* SceneDelegate.swift */,
-				D6B714D9275141290088F364 /* ViewController.swift */,
+				D6B714D9275141290088F364 /* MorphingSquareController.swift */,
+				D6184900275CCC79007BA569 /* YellingGooseController.swift */,
+				D61848FE275CCBD2007BA569 /* TabBarController.swift */,
 				D6B714DE2751412B0088F364 /* Assets.xcassets */,
 				D6B714E02751412B0088F364 /* LaunchScreen.storyboard */,
 				D6B714E32751412B0088F364 /* Info.plist */,
@@ -134,8 +140,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6B714DA275141290088F364 /* ViewController.swift in Sources */,
+				D6B714DA275141290088F364 /* MorphingSquareController.swift in Sources */,
+				D61848FF275CCBD2007BA569 /* TabBarController.swift in Sources */,
 				D6B714D6275141290088F364 /* AppDelegate.swift in Sources */,
+				D6184901275CCC79007BA569 /* YellingGooseController.swift in Sources */,
 				D6B714D8275141290088F364 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

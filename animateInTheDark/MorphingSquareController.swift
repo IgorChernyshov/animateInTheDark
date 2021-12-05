@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MorphingSquareController.swift
 //  animateInTheDark
 //
 //  Created by Igor Chernyshov on 26.11.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MorphingSquareController: UIViewController {
 
 	var squareView: UIView = UIView()
 	var startButton: UIBarButtonItem?
