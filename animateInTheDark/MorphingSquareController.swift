@@ -46,7 +46,7 @@ class MorphingSquareController: UIViewController {
 	private func animateSquare() {
 		CATransaction.begin()
 		CATransaction.setCompletionBlock {
-			guard self.isAnimating else { return }
+			guard self.isAnimating else { return self.throwViewToScreen() }
 			self.iterationCount += 1
 			self.animateSquare()
 		}
@@ -76,6 +76,20 @@ class MorphingSquareController: UIViewController {
 		animationGroup.animations = [translationAnimation, cornerRadiusAnimation, backgroundColorAnimation, bounceAnimation]
 
 		squareView.layer.add(animationGroup, forKey: "animation")
+
+		CATransaction.commit()
+	}
+
+	private func throwViewToScreen() {
+		CATransaction.begin()
+
+		let throwToScreenAnimation = CABasicAnimation(keyPath: "transform.scale")
+		throwToScreenAnimation.fromValue = 1
+		throwToScreenAnimation.toValue = 60
+		throwToScreenAnimation.duration = animationDuration
+		throwToScreenAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+
+		squareView.layer.add(throwToScreenAnimation, forKey: "animation")
 
 		CATransaction.commit()
 	}
